@@ -1,12 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet/* , View */ } from 'react-native';
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./screens/Home";
+import ReviewDetails from "./screens/ReviewDetails";
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [ fontsLoaded ] = useFonts({
@@ -25,11 +30,16 @@ export default function App() {
   };
 
   return (
-    <View onLayout={ onLayoutRootView }>
-      <Home />
+    // <View onLayout={ onLayoutRootView }>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={ Home } />
+          <Stack.Screen name="ReviewDetails" component={ ReviewDetails } />
+        </Stack.Navigator>
 
-      <StatusBar style="auto" />
-    </View>
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    // </View>
   );
 }
 
