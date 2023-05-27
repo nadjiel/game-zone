@@ -4,14 +4,10 @@ import { useFonts } from "expo-font";
 import { useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Home from "./screens/Home";
-import ReviewDetails from "./screens/ReviewDetails";
+import MainNavigator from './routes/MainNavigator';
 
 // SplashScreen.preventAutoHideAsync();
-
-const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [ fontsLoaded ] = useFonts({
@@ -32,10 +28,7 @@ export default function App() {
   return (
     // <View onLayout={ onLayoutRootView }>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={ Home } />
-          <Stack.Screen name="ReviewDetails" component={ ReviewDetails } />
-        </Stack.Navigator>
+        <MainNavigator />
 
         <StatusBar style="auto" />
       </NavigationContainer>
