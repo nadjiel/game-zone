@@ -1,36 +1,22 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import Home from "../screens/Home";
-import ReviewDetails from "../screens/ReviewDetails";
+import HomeNavigator from "./HomeNavigator";
+import AboutNavigator from "./AboutNavigator";
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function MainNavigator() {
   return (
-    <Stack.Navigator
-      initialRouteName="Home"
-      screenOptions={ {
-        headerTintColor: "#444",
-        headerStyle: {
-          backgroundColor: "#eee"
-        }
-      } }
-    >
-      <Stack.Screen
-        name="Home"
-        component={ Home }
-        options={ {
-          title: "Game Zone"
-        } }
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen
+        name="HomeNavigator"
+        component={ HomeNavigator }
       />
-      <Stack.Screen
-        name="ReviewDetails"
-        component={ ReviewDetails }
-        options={ {
-          title: "Review Details"
-        } }
+      <Drawer.Screen
+        name="AboutNavigator"
+        component={ AboutNavigator }
       />
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 }
 
