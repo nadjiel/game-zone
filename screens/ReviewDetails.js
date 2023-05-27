@@ -1,19 +1,13 @@
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 
 import { globalStyles } from "../styles/global";
 
-function ReviewDetails({ navigation }) {
-  const pressHandler = () => {
-    navigation.goBack();
-  }
-
+function ReviewDetails({ route }) {
   return (
     <View style={ globalStyles.container }>
-      <Text>Review Details</Text>
-      <Button
-        title="Go back home"
-        onPress={ pressHandler }
-      />
+      <Text style={ globalStyles.title }>{ route.params.title }</Text>
+      <Text style={ globalStyles.title }>{ route.params.body }</Text>
+      <Text style={ globalStyles.title }>{ route.params.rating }</Text>
     </View>
   )
 }
