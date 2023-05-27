@@ -2,6 +2,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import About from "../screens/About";
 
+import Header from "../components/Header";
+
 const Stack = createNativeStackNavigator();
 
 function AboutNavigator() {
@@ -17,9 +19,14 @@ function AboutNavigator() {
       <Stack.Screen
         name="About"
         component={ About }
-        options={ {
-          title: "About Game Zone"
-        } }
+        options={ ({ navigation }) => ({
+          headerTitle: () => (
+            <Header
+              navigation={ navigation }
+              title="About Game Zone"
+            />
+          )
+        }) }
       />
     </Stack.Navigator>
   );

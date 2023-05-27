@@ -7,7 +7,12 @@ const Drawer = createDrawerNavigator();
 
 function MainNavigator() {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={ {
+        headerShown: false
+      } }
+    >
       <Drawer.Screen
         name="HomeNavigator"
         component={ HomeNavigator }
