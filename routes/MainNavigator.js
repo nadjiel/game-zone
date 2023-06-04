@@ -14,11 +14,11 @@ function MainNavigator() {
       } }
     >
       <Drawer.Screen
-        name="HomeNavigator"
+        name="Home Page"
         component={ HomeNavigator }
       />
       <Drawer.Screen
-        name="AboutNavigator"
+        name="About Game Zone"
         component={ AboutNavigator }
       />
     </Drawer.Navigator>

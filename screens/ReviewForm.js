@@ -41,6 +41,7 @@ function ReviewForm({ addReview }) {
             <TextInput
               style={ globalStyles.input }
               multiline
+              minHeight={ 60 }
               placeholder="Review body"
               value={ fProps.values.body }
               onChangeText={ fProps.handleChange("body") }
