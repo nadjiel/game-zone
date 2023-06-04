@@ -1,13 +1,25 @@
 import { View, TextInput, Button } from "react-native";
 import { Formik } from "formik";
+import * as yup from "yup";
 
 import { globalStyles } from "../styles/global";
+
+const reviewSchema = yup.object({
+  title: yup.string().required().min(4),
+  body: yup.string().required().min(8),
+  rating: yup.string().required().test(
+    "is-1-5",
+    "Rating must be a number 1 - 5",
+    val => parseInt(val) <= 5 && parseInt(val) >= 1
+  )
+});
 
 function ReviewForm({ addReview }) {
   return (
     <View style={ globalStyles.container }>
       <Formik
         initialValues={ { title: '', body: '', rating: '' } }
+        validationSchema={ reviewSchema }
         onSubmit={ (values, actions) => {
           actions.resetForm();
           addReview(values);
