@@ -1,4 +1,4 @@
-import { View, TextInput, Button } from "react-native";
+import { View, TextInput, Text, Button } from "react-native";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -30,23 +30,31 @@ function ReviewForm({ addReview }) {
             <TextInput
               style={ globalStyles.input }
               placeholder="Review title"
-              onChangeText={ fProps.handleChange("title") }
               value={ fProps.values.title }
+              onChangeText={ fProps.handleChange("title") }
+              onBlur={ fProps.handleBlur("title") }
             />
+            <Text style={ globalStyles.errorText }>{ fProps.touched.title && fProps.errors.title }</Text>
+
             <TextInput
               style={ globalStyles.input }
               multiline
               placeholder="Review body"
-              onChangeText={ fProps.handleChange("body") }
               value={ fProps.values.body }
+              onChangeText={ fProps.handleChange("body") }
+              onBlur={ fProps.handleBlur("body") }
             />
+            <Text style={ globalStyles.errorText }>{ fProps.touched.body && fProps.errors.body }</Text>
+
             <TextInput
               style={ globalStyles.input }
               keyboardType="numeric"
               placeholder="Rating (1-5)"
-              onChangeText={ fProps.handleChange("rating") }
               value={ fProps.values.rating }
+              onChangeText={ fProps.handleChange("rating") }
+              onBlur={ fProps.handleBlur("rating") }
             />
+            <Text style={ globalStyles.errorText }>{ fProps.touched.rating && fProps.errors.rating }</Text>
 
             <Button
               title="submit"
